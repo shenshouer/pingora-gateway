@@ -1,0 +1,46 @@
+# kubectl apply -f
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: pingora
+spec:
+  controllerName: "eeo.cn/pingora/v0.1"
+  parametersRef:
+    group: ""
+    kind: ConfigMap
+    name: pingora-gateway-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pingora-gateway-config
+data:
+  server.yaml: |-
+    upgrade: false
+    daemon: false
+    nocapture: false
+    test: false
+    conf: /Users/sope/workspaces/k8s/gateway/gateway-pingora/tests/config.yaml
+    ports:
+    - port: 80
+      protocol: HTTP
+    - port: 443
+      protocol: HTTPS
+      cert:
+        crt: /Users/sope/workspaces/k8s/gateway/gateway-pingora/tests/keys/server.crt
+        key: /Users/sope/workspaces/k8s/gateway/gateway-pingora/tests/keys/key.pem
+    - port: 8080
+      protocol: TCP
+    - port: 8443
+      protocol: TLS
+      cert:
+        crt: /Users/sope/workspaces/k8s/gateway/gateway-pingora/tests/keys/server.crt
+        key: /Users/sope/workspaces/k8s/gateway/gateway-pingora/tests/keys/key.pem
+
+  config.yaml: |-
+    version: 1
+    threads: 2
+    pid_file: /run/pingora.pid
+    upgrade_sock: /tmp/pingora_upgrade.sock
+    user: nobody
+    group: webusers

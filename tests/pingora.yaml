@@ -1,0 +1,7 @@
+# https://github.com/cloudflare/pingora/blob/main/docs/user_guide/conf.md
+version: 1
+threads: 2
+pid_file: /run/pingora.pid
+upgrade_sock: /tmp/pingora_upgrade.sock
+user: nobody
+group: webusers

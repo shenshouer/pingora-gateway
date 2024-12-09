@@ -1,0 +1,28 @@
+[package]
+name = "pingora-gateway"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+default = ["standard"]
+standard = []
+experimental = []
+
+[dependencies]
+anyhow = "1"
+async-trait = "0.1"
+clap = { version = "3", features = ["derive", "env"] }
+futures = "0.3"
+gateway-api = "0.14"
+http = "1"
+kube = { version = "0.96", features = ["runtime", "derive"] }
+k8s-openapi = { version = "0.23", features = ["latest"] }
+pingora = { version = "0.4", features = ["proxy", "lb", "openssl"] }
+regex = "1"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_yaml = "0.8"
+tokio = { version = "1.41", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = "0.3"
+wildcard = "0.3.0"

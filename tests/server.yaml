@@ -1,0 +1,23 @@
+name: pingora
+upgrade: false
+daemon: false
+nocapture: false
+test: false
+conf: /Users/sope/workspaces/k8s/gateway/gateway-pingora/tests/pingora.yaml
+ports:
+  - port: 8000
+    protocol: HTTP
+  # - port: 443
+  #   protocol: HTTPS
+  #   cert:
+  #     crt: /Users/sope/workspaces/k8s/gateway/gateway-pingora/tests/keys/server.crt
+  #     key: /Users/sope/workspaces/k8s/gateway/gateway-pingora/tests/keys/key.pem
+  # - port: 8080
+  #   protocol: TCP
+  # - port: 8443
+  #   protocol: TLS
+  #   cert:
+  #     crt: /Users/sope/workspaces/k8s/gateway/gateway-pingora/tests/keys/server.crt
+  #     key: /Users/sope/workspaces/k8s/gateway/gateway-pingora/tests/keys/key.pem
+  # - port: 53
+  #   protocol: UDP
